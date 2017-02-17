@@ -3,8 +3,8 @@ python:
   - '3.5'
 install: pip install wheel
 script:
-  - python3 setup.py bdist_wheel --os unix --dist-dir=wheel/unix/ -p unix
-  - python3 setup.py bdist_wheel --os android --dist-dir=wheel/unix/ -p android
+  - python3 setup.py bdist_wheel --os unix --dist-dir=wheel/unix/
+  - python3 setup.py bdist_wheel --os android --dist-dir=wheel/unix/
 
 deploy:
   provider: releases

@@ -1,0 +1,17 @@
+version: 0.0.0.{build}
+clone_folder: C:\DEV\agentlib
+build_script:
+- cmd: >-
+    C:\Python35\python.exe -m pip install wheel
+
+    C:\Python35\python.exe setup.py bdist_wheel --os win32 -p win32 --dist-dir=wheel/win32/
+artifacts:
+- path: wheel/win32/*.whl
+  name: win32
+deploy:
+- provider: GitHub
+  auth_token:
+    secure: WUWVUc6xnfZZFC4/TqHWdgJZJ8ZvwU1AMzXHpme1GgF31YsTF1pMATidUafIq+K3
+  artifact: win32
+  on:
+    APPVEYOR_REPO_TAG: true

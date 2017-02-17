@@ -1,0 +1,18 @@
+language: python
+python:
+  - '3.5'
+install: pip install wheel
+script:
+  - python3 setup.py bdist_wheel --os unix --dist-dir=wheel/unix/ -p unix
+  - python3 setup.py bdist_wheel --os android --dist-dir=wheel/unix/ -p android
+
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: hTTZukrgjcTsAw8uGTrXHOPt9qhL0YdqnsMW6UyCtdgLMqY4EV1pIw3rY5PcSFyCXmQhoi0PzYDK7/8Mecz3+yhEYtbXLvi8QtZv7mJnlvDuQKx2335MQ0KgyLxAucKujW10nyRejvnYvyRSN3Dnd141CxqoM7oJEZHRQ1PEizsniRc/swyCD+Uf5/WevBvD374/tvu9t04xwfsYEcaJLDCWpnSpBlVDbwfESylvldyIdPuaU0jY5yix/n5VrXL7pl9ixYcRlK3Kyj2ld03N+6xtM2oQLN3+i/hdUOkcJ3LcNh2De3WoDouNhWR/2gkmhuZ+V9tOA+seRyvsND0AuY0qaXETKUrAy28AmFR065uRGG9dCUcVfsGC+thC1OgxvAnNUhPNnNF9bg/MS2xdBrr94cJtGo665Z2yz6vX4zKhRE6e4rxUCIbAMTFsArRuFKrIUb42tk4Bbo91RMybEHoOWHtedVildvfOJQOMbF/4CwDsbVbbp+34kbuko1OsE7NTm8un6tMjYG+H6mYJrwg/8NzigUZQKcl5j/QloD2DAbFgk7tKl8AazngehcCZubrgGHOwghDQa71WsG+GBxL2oidi5BkpsLhCOJPc/I+65DHPW1Ddw23Ybx0U8O51zSChyiGuqSVUDPtyj/P2tOOvlT8i6bmkf+K53gV9C3o=
+  file_glob: true
+  file: wheel/*/*.whl
+  on:
+    repo: PokeSec/agentlib
+    tags: true

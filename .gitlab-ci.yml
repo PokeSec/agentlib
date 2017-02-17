@@ -1,0 +1,29 @@
+unix:
+  script:
+    - python3 setup.py bdist_wheel --os unix --dist-dir=wheel/unix/
+  artifacts:
+    paths:
+      - wheel/unix
+    expire_in: 1 week
+  tags:
+    - linux
+
+win32:
+  script:
+    - python setup.py bdist_wheel --os win32 --dist-dir=wheel/win32/
+  artifacts:
+    paths:
+      - wheel/win32
+    expire_in: 1 week
+  tags:
+    - windows
+
+android:
+  script:
+    - python3 setup.py bdist_wheel --os android --dist-dir=wheel/android/
+  artifacts:
+    paths:
+      - wheel/android
+    expire_in: 1 week
+  tags:
+    - android
